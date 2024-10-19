@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://jgvghvgh.github.io</id>
+    <id>https://xyh-a.github.io</id>
     <title>xyh&apos;blog</title>
-    <updated>2024-10-19T02:56:01.184Z</updated>
+    <updated>2024-10-19T03:11:35.904Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://jgvghvgh.github.io"/>
-    <link rel="self" href="https://jgvghvgh.github.io/atom.xml"/>
+    <link rel="alternate" href="https://xyh-a.github.io"/>
+    <link rel="self" href="https://xyh-a.github.io/atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>https://jgvghvgh.github.io/images/avatar.png</logo>
-    <icon>https://jgvghvgh.github.io/favicon.ico</icon>
+    <logo>https://xyh-a.github.io/images/avatar.png</logo>
+    <icon>https://xyh-a.github.io/favicon.ico</icon>
     <rights>All rights reserved 2024, xyh&apos;blog</rights>
     <entry>
         <title type="html"><![CDATA[学习周报]]></title>
-        <id>https://jgvghvgh.github.io/xue-xi-zhou-bao/</id>
-        <link href="https://jgvghvgh.github.io/xue-xi-zhou-bao/">
+        <id>https://xyh-a.github.io/xue-xi-zhou-bao/</id>
+        <link href="https://xyh-a.github.io/xue-xi-zhou-bao/">
         </link>
         <updated>2024-10-19T02:53:49.000Z</updated>
     </entry>
