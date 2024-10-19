@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://xyh-a.github.io/favicon.ico?v=1729307493434">
+<link rel="shortcut icon" href="https://xyh-a.github.io/favicon.ico?v=1729308665237">
 <link rel="stylesheet" href="https://xyh-a.github.io/styles/main.css">
 
 
@@ -24,9 +24,17 @@
 
 
 
-    <meta name="description" content="daadd😀
-" />
-    <meta name="keywords" content="" />
+    <meta name="description" content="
+#include
+using namespace std;
+typedef struct huffmantree {
+int weight;
+int lchild;
+int rchild;
+int parent;
+}ht;
+ht* huf..." />
+    <meta name="keywords" content="学习经验" />
   </head>
   <body>
     <div id="app" class="main">
@@ -35,7 +43,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://xyh-a.github.io">
-        <img src="https://xyh-a.github.io/images/avatar.png?v=1729307493434" class="site-logo">
+        <img src="https://xyh-a.github.io/images/avatar.png?v=1729308665237" class="site-logo">
         <h1 class="site-title">xyh&#39;blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -45,25 +53,25 @@
     <div>
       
         
-          <a href="https://jgvghvgh.github.io" class="site-nav">
+          <a href="https://xyh-a.github.io" class="site-nav">
             首页
           </a>
         
       
         
-          <a href="https://jgvghvgh.github.io/archives" class="site-nav">
+          <a href="https://xyh-a.github.io/tags" class="site-nav">
             归档
           </a>
         
       
         
-          <a href="https://jgvghvgh.github.io/archives" class="site-nav">
+          <a href="https://xyh-a.github.io/archives" class="site-nav">
             标签
           </a>
         
       
         
-          <a href="https://jgvghvgh.github.io/tags" class="site-nav">
+          <a href="https://xyh-a.github.io/tags" class="site-nav">
             关于
           </a>
         
@@ -88,7 +96,7 @@
       温故而知新
     </div>
     <div class="site-footer">
-       | <a class="rss" href="https://xyh-a.github.io/atom.xml" target="_blank">RSS</a>
+      仅供学习参考，未经允许请勿转载 | <a class="rss" href="https://xyh-a.github.io/atom.xml" target="_blank">RSS</a>
     </div>
   </div>
 </div>
@@ -100,10 +108,99 @@
             <h2 class="post-title">学习周报</h2>
             <div class="post-date">2024-10-19</div>
             
+              <div class="feature-container" style="background-image: url('https://xyh-a.github.io/post-images/xue-xi-zhou-bao.jpg')">
+              </div>
+            
             <div class="post-content" v-pre>
-              <p>daadd😀</p>
+              <!-- more -->
+<p>#include<iostream><br>
+using namespace std;<br>
+typedef struct huffmantree {<br>
+int weight;<br>
+int lchild;<br>
+int rchild;<br>
+int parent;<br>
+}ht;<br>
+ht* huffmanTree = NULL;<br>
+void createhuffmantree(int[], int);<br>
+void creathuffamncode(int);<br>
+int main() {<br>
+int n;<br>
+int w[1000];<br>
+cin &gt;&gt; n;<br>
+for (int i = 1; i &lt;= n; i++) {<br>
+cin &gt;&gt; w[i];<br>
+}<br>
+int m = 2 * n - 1;<br>
+huffmanTree = new ht[m + 1];<br>
+createhuffmantree(w, n);<br>
+creathuffamncode(n);<br>
+}<br>
+void select(ht huffmanTree[], int n, int&amp; s1, int&amp; s2) {<br>
+int min;<br>
+for (int i = 1; i &lt;= n; i++) {<br>
+if (huffmanTree[i].parent == 0) {<br>
+min = i;<br>
+break;<br>
+}<br>
+}<br>
+for (int i = 1; i &lt;= n; i++) {<br>
+if (huffmanTree[i].parent == 0) {<br>
+if (huffmanTree[i].weight &lt; huffmanTree[min].weight) {<br>
+min = i;<br>
+}<br>
+}<br>
+}<br>
+s1 = min;<br>
+for (int i = 1; i &lt;= n; i++) {<br>
+if (huffmanTree[i].parent == 0&amp;&amp;i!=s1) {<br>
+min = i;<br>
+break;<br>
+}<br>
+}<br>
+for (int i = 1; i &lt;= n; i++) {<br>
+if (huffmanTree[i].parent == 0 &amp;&amp; i != s1) {<br>
+if (huffmanTree[i].weight &lt; huffmanTree[min].weight) {<br>
+min = i;<br>
+}<br>
+}<br>
+}<br>
+s2 = min;<br>
+}<br>
+void createhuffmantree(int w[], int n) {<br>
+int s1;<br>
+int s2;<br>
+int m = 2 * n - 1;<br>
+for (int i = 0; i &lt;= n; i++) {<br>
+huffmanTree[i].weight = w[i];<br>
+huffmanTree[i].parent = 0;<br>
+huffmanTree[i].lchild = 0;<br>
+huffmanTree[i].rchild = 0;<br>
+}<br>
+for (int i = n + 1; i &lt;= m; i++) {<br>
+huffmanTree[i].weight = w[i];<br>
+huffmanTree[i].parent = 0;<br>
+huffmanTree[i].lchild = 0;<br>
+huffmanTree[i].rchild = 0;<br>
+}<br>
+for (int i = n + 1; i &lt;= m; i++) {<br>
+select(huffmanTree, i - 1, s1, s2);<br>
+huffmanTree[s1].parent = i;<br>
+huffmanTree[s2].parent = i;<br>
+huffmanTree[i].lchild = s1;<br>
+huffmanTree[i].rchild = s2;<br>
+huffmanTree[i].weight = huffmanTree[s1].weight + huffmanTree[s2].weight;<br>
+}</p>
 
             </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://xyh-a.github.io/3YIfnKSDRj/" class="tag">
+                    学习经验
+                  </a>
+                
+              </div>
             
             
 
