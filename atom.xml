@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xyh-a.github.io</id>
     <title>xyh&apos;s blog</title>
-    <updated>2024-10-19T10:53:26.961Z</updated>
+    <updated>2024-10-19T11:12:12.417Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xyh-a.github.io"/>
     <link rel="self" href="https://xyh-a.github.io/atom.xml"/>
@@ -21,7 +21,7 @@
 <strong>作用</strong><br>
 1.哈夫曼树主要运用于数据压缩，哈夫曼编码是实现数据压缩的重要方案<br>
 2.哈夫曼编码可以在用二进制给字符编码时使电文总长最短且意思唯一<br>
-3贪心算法也跟哈夫曼树有关（不过并未学习贪心算法）<br>
+3贪心算法也跟哈夫曼树有关（不过并未学习贪心算法😵）<br>
 <strong>关于哈夫曼树的一些概念和性质</strong><br>
 1哈夫曼树其实是最优二叉树，就是带权路径长（wpl）最短的树<br>
 2哈夫曼树中权越大的结点离根越近</p>
@@ -31,7 +31,7 @@
 <strong>作用</strong><br>
 1.哈夫曼树主要运用于数据压缩，哈夫曼编码是实现数据压缩的重要方案<br>
 2.哈夫曼编码可以在用二进制给字符编码时使电文总长最短且意思唯一<br>
-3贪心算法也跟哈夫曼树有关（不过并未学习贪心算法）<br>
+3贪心算法也跟哈夫曼树有关（不过并未学习贪心算法😵）<br>
 <strong>关于哈夫曼树的一些概念和性质</strong><br>
 1哈夫曼树其实是最优二叉树，就是带权路径长（wpl）最短的树<br>
 2哈夫曼树中权越大的结点离根越近</p>
