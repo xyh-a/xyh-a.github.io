@@ -219,11 +219,7 @@ button:hover {
     transform: translateY(100vh);
   }
 }
-body {
-  background-image: url('https://haowallpaper.com/link/common/file/previewFileImg/15556743616106816');
-  
-  background-size: cover;
-}
+
 module.exports = {
   root: true,
   env: {
@@ -302,5 +298,39 @@ module.exports = {
     require('tailwindcss'),
     require('autoprefixer'),
   ],
+}
+body {
+    background: url('https://haowallpaper.com/link/common/file/previewFileImg/15557854820208960') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+.post-list {
+    list-style: none;
+    padding: 0;
+}
+
+.post-item {
+    margin-bottom: 30px;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+@media (max-width: 768px) {
+    .header, .footer, .content {
+        padding: 10px;
+    }
+}
+@keyframes clickEffect {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+button, a {
+    transition: all 0.3s;
+}
+
+button:active, a:active {
+    animation: clickEffect 0.2s forwards; /* 使用定义好的动画 */
 }
     
