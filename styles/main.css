@@ -206,5 +206,22 @@ button:hover {
   border: 1px solid #ccc;
   border-radius: 5px;
   overflow-x: auto;
+}.star {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background-color: white;
+  animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+body {
+  background-image: url('https://haowallpaper.com/link/common/file/previewFileImg/15556743616106816');
+  
+  background-size: cover;
 }
     
