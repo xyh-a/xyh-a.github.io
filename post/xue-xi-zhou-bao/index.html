@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>学习周报 | xyh&#39;s blog</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://xyh-a.github.io/favicon.ico?v=1729319246461">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://xyh-a.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://xyh-a.github.io">xyh&#39;s blog</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="https://xyh-a.github.io" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="https://xyh-a.github.io/tags" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="https://xyh-a.github.io/archives" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="https://xyh-a.github.io/archives" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>学习周报</h1>
+            <p class="article-meta">
+              2024-10-19
+              
+                <a href="https://xyh-a.github.io/tag/3YIfnKSDRj/" class="badge success">
+                  学习经验
+                </a>
+              
+            </p>
+            
+              <img src="https://xyh-a.github.io/post-images/xue-xi-zhou-bao.jpg" alt="学习周报">
+            
+            <div class="post-content">
+              <p><a href="https://xyh-a.github.io/post-images/1729316725353.jpg"></a><br>
+本周学习了哈夫曼树的性质以及一些作用还有图的一些基础概念<br>
+<strong>作用</strong><br>
+1.哈夫曼树主要运用于数据压缩，哈夫曼编码是实现数据压缩的重要方案<br>
+2.哈夫曼编码可以在用二进制给字符编码时使电文总长最短且意思唯一<br>
+3贪心算法也跟哈夫曼树有关（不过并未学习贪心算法）<br>
+<strong>关于哈夫曼树的一些概念和性质</strong><br>
+1哈夫曼树其实是最优二叉树，就是带权路径长（wpl）最短的树<br>
+2哈夫曼树中权越大的结点离根越近</p>
+<!-- more -->
+<p><strong>代码实现</strong></p>
+<pre><code class="language-c++">#include&lt;iostream&gt;
+using namespace std;
+typedef struct huffmantree {
+	int weight;//权值
+	int lchild;//左孩子
+	int rchild;//右孩子
+	int parent;//双亲节点
+}ht;//建立哈夫曼树结点
+ht* huffmanTree = NULL;
+void createhuffmantree(int[], int);
+void creathuffamncode(int);
+int main() {
+	int n;
+	int w[1000];//接收数据的数组
+	cin &gt;&gt; n;
+	for (int i = 1; i &lt;= n; i++) {
+		cin &gt;&gt; w[i];
+	}
+	int m = 2 * n - 1;//哈夫曼树的容量
+	huffmanTree = new ht[m + 1];//申请m+1大小的空间存储哈夫曼树
+	createhuffmantree(w, n);
+	creathuffamncode(n);
+}
+//找到两个最小的权值
+void select(ht huffmanTree[], int n, int&amp; s1, int&amp; s2) {
+	int min;
+	//遍历节点，找出单结点
+
+	for (int i = 1; i &lt;= n; i++) {
+		if (huffmanTree[i].parent == 0) {
+			min = i;
+			break;
+		}
+	}
+	//接着遍历全部节点，找出权值最小的单结点
+	for (int i = 1; i &lt;= n; i++) {
+		if (huffmanTree[i].parent == 0) {
+			if (huffmanTree[i].weight &lt; huffmanTree[min].weight) {
+				min = i;
+			}
+		}
+	}
+	s1 = min;
+	//进行和上面相同的操作，找到第二小的结点
+	for (int i = 1; i &lt;= n; i++) {
+		if (huffmanTree[i].parent == 0&amp;&amp;i!=s1) {
+			min = i;
+			break;
+		}
+	}
+	for (int i = 1; i &lt;= n; i++) {
+		if (huffmanTree[i].parent == 0 &amp;&amp; i != s1) {
+			if (huffmanTree[i].weight &lt; huffmanTree[min].weight) {
+				min = i;
+			}
+		}
+	}
+	s2 = min;
+}
+//构建哈夫曼树
+void createhuffmantree(int w[], int n) {
+	int s1;
+	int s2;
+	int m = 2 * n - 1;
+	//1——n号空间存放叶子结点，初始化结点
+	for (int i = 0; i &lt;= n; i++) {
+		//其中叶子结点的权值是w[n]数组保存
+		huffmanTree[i].weight = w[i];
+		huffmanTree[i].parent = 0;
+		huffmanTree[i].lchild = 0;
+		huffmanTree[i].rchild = 0;
+	}
+	//对于其它的节点即非叶子结点
+	for (int i = n + 1; i &lt;= m; i++) {
+		huffmanTree[i].weight = w[i];
+		huffmanTree[i].parent = 0;
+		huffmanTree[i].lchild = 0;
+		huffmanTree[i].rchild = 0;
+	}
+	//创建非叶子结点，构建哈夫曼树
+	for (int i = n + 1; i &lt;= m; i++) {
+		//找到权值最小的两个结点，分别赋值给s1和s2
+		select(huffmanTree, i - 1, s1, s2);
+		huffmanTree[s1].parent = i;
+		huffmanTree[s2].parent = i;
+		huffmanTree[i].lchild = s1;
+		huffmanTree[i].rchild = s2;
+		huffmanTree[i].weight = huffmanTree[s1].weight + huffmanTree[s2].weight;
+	}
+}
+void creathuffamncode(int n) {
+	string* huffmancode = new string[n + 1];
+	for (int i = 1; i &lt;= n; i++) {
+		string cd = &quot;&quot;;
+		//我们从叶子结点开始向上遍历
+		for (int c = i, p = huffmanTree[i].parent; p != 0; c = p, p = huffmanTree[p].parent) {
+			if (huffmanTree[p].lchild == c) {
+				cd = &quot;0&quot; + cd;
+			}
+			else {
+				cd = &quot;1&quot; + cd;
+			}
+		}
+		huffmancode[i] = cd;
+	}
+	//输出编码
+	for (int i = 1; i &lt;= n; i++) {
+		cout &lt;&lt; huffmanTree[i].weight &lt;&lt; &quot; &quot; &lt;&lt; huffmancode[i] &lt;&lt; endl;
+	}
+}
+**运行代码结果**
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://xyh-a.github.io/post-images/1729316738145.png" alt="" loading="lazy"></figure>
+<!-- more -->
+<p>关于图并未学习太多，图涉及概念多，涉及一些离散数学知识，不过不知道也没事，梳理一些相关概念<br>
+1.图有无向图，有向图，还有完全图（任意两点都有一条边相连）<br>
+2顶点的度简单理解就是与顶点相关联的边的数目<br>
+3连通图，对任意两个顶点v，u都有v,到u的路径<br>
+差不多就学了这些。</p>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+        </div>
+        
+          
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
+
+          
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://xyh-a.github.io/images/avatar.png?v=1729319246461" class="no-responsive avatar">
+    <div class="text-muted">温故而知新</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://xyh-a.github.io/post/xue-xi-zhou-bao/">学习周报</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://xyh-a.github.io/tag/3YIfnKSDRj/" class="badge ">
+          学习经验
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    仅供学习参考，未经允许请勿转载 | <a class="rss" href="https://xyh-a.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
