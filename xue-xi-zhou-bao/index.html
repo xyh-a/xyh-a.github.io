@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://xyh-a.github.io/favicon.ico?v=1729308665237">
+<link rel="shortcut icon" href="https://xyh-a.github.io/favicon.ico?v=1729310534308">
 <link rel="stylesheet" href="https://xyh-a.github.io/styles/main.css">
 
 
@@ -24,16 +24,13 @@
 
 
 
-    <meta name="description" content="
-#include
+    <meta name="description" content="#include&lt;iostream&gt;
 using namespace std;
 typedef struct huffmantree {
-int weight;
-int lchild;
-int rchild;
-int parent;
-}ht;
-ht* huf..." />
+	int weight;
+	int lchild;
+	int rchild;
+	int p..." />
     <meta name="keywords" content="学习经验" />
   </head>
   <body>
@@ -43,7 +40,7 @@ ht* huf..." />
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://xyh-a.github.io">
-        <img src="https://xyh-a.github.io/images/avatar.png?v=1729308665237" class="site-logo">
+        <img src="https://xyh-a.github.io/images/avatar.png?v=1729310534308" class="site-logo">
         <h1 class="site-title">xyh&#39;blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -112,85 +109,85 @@ ht* huf..." />
               </div>
             
             <div class="post-content" v-pre>
-              <!-- more -->
-<p>#include<iostream><br>
-using namespace std;<br>
-typedef struct huffmantree {<br>
-int weight;<br>
-int lchild;<br>
-int rchild;<br>
-int parent;<br>
-}ht;<br>
-ht* huffmanTree = NULL;<br>
-void createhuffmantree(int[], int);<br>
-void creathuffamncode(int);<br>
-int main() {<br>
-int n;<br>
-int w[1000];<br>
-cin &gt;&gt; n;<br>
-for (int i = 1; i &lt;= n; i++) {<br>
-cin &gt;&gt; w[i];<br>
-}<br>
-int m = 2 * n - 1;<br>
-huffmanTree = new ht[m + 1];<br>
-createhuffmantree(w, n);<br>
-creathuffamncode(n);<br>
-}<br>
-void select(ht huffmanTree[], int n, int&amp; s1, int&amp; s2) {<br>
-int min;<br>
-for (int i = 1; i &lt;= n; i++) {<br>
-if (huffmanTree[i].parent == 0) {<br>
-min = i;<br>
-break;<br>
-}<br>
-}<br>
-for (int i = 1; i &lt;= n; i++) {<br>
-if (huffmanTree[i].parent == 0) {<br>
-if (huffmanTree[i].weight &lt; huffmanTree[min].weight) {<br>
-min = i;<br>
-}<br>
-}<br>
-}<br>
-s1 = min;<br>
-for (int i = 1; i &lt;= n; i++) {<br>
-if (huffmanTree[i].parent == 0&amp;&amp;i!=s1) {<br>
-min = i;<br>
-break;<br>
-}<br>
-}<br>
-for (int i = 1; i &lt;= n; i++) {<br>
-if (huffmanTree[i].parent == 0 &amp;&amp; i != s1) {<br>
-if (huffmanTree[i].weight &lt; huffmanTree[min].weight) {<br>
-min = i;<br>
-}<br>
-}<br>
-}<br>
-s2 = min;<br>
-}<br>
-void createhuffmantree(int w[], int n) {<br>
-int s1;<br>
-int s2;<br>
-int m = 2 * n - 1;<br>
-for (int i = 0; i &lt;= n; i++) {<br>
-huffmanTree[i].weight = w[i];<br>
-huffmanTree[i].parent = 0;<br>
-huffmanTree[i].lchild = 0;<br>
-huffmanTree[i].rchild = 0;<br>
-}<br>
-for (int i = n + 1; i &lt;= m; i++) {<br>
-huffmanTree[i].weight = w[i];<br>
-huffmanTree[i].parent = 0;<br>
-huffmanTree[i].lchild = 0;<br>
-huffmanTree[i].rchild = 0;<br>
-}<br>
-for (int i = n + 1; i &lt;= m; i++) {<br>
-select(huffmanTree, i - 1, s1, s2);<br>
-huffmanTree[s1].parent = i;<br>
-huffmanTree[s2].parent = i;<br>
-huffmanTree[i].lchild = s1;<br>
-huffmanTree[i].rchild = s2;<br>
-huffmanTree[i].weight = huffmanTree[s1].weight + huffmanTree[s2].weight;<br>
-}</p>
+              <pre><code class="language-c">#include&lt;iostream&gt;
+using namespace std;
+typedef struct huffmantree {
+	int weight;
+	int lchild;
+	int rchild;
+	int parent;
+}ht;
+ht* huffmanTree = NULL;
+void createhuffmantree(int[], int);
+void creathuffamncode(int);
+int main() {
+	int n;
+	int w[1000];
+	cin &gt;&gt; n;
+	for (int i = 1; i &lt;= n; i++) {
+		cin &gt;&gt; w[i];
+	}
+	int m = 2 * n - 1;
+	huffmanTree = new ht[m + 1];
+	createhuffmantree(w, n);
+	creathuffamncode(n);
+}
+void select(ht huffmanTree[], int n, int&amp; s1, int&amp; s2) {
+	int min;
+	for (int i = 1; i &lt;= n; i++) {
+		if (huffmanTree[i].parent == 0) {
+			min = i;
+			break;
+		}
+	}
+	for (int i = 1; i &lt;= n; i++) {
+		if (huffmanTree[i].parent == 0) {
+			if (huffmanTree[i].weight &lt; huffmanTree[min].weight) {
+				min = i;
+			}
+		}
+	}
+	s1 = min;
+	for (int i = 1; i &lt;= n; i++) {
+		if (huffmanTree[i].parent == 0&amp;&amp;i!=s1) {
+			min = i;
+			break;
+		}
+	}
+	for (int i = 1; i &lt;= n; i++) {
+		if (huffmanTree[i].parent == 0 &amp;&amp; i != s1) {
+			if (huffmanTree[i].weight &lt; huffmanTree[min].weight) {
+				min = i;
+			}
+		}
+	}
+	s2 = min;
+}
+void createhuffmantree(int w[], int n) {
+	int s1;
+	int s2;
+	int m = 2 * n - 1;
+	for (int i = 0; i &lt;= n; i++) {
+		huffmanTree[i].weight = w[i];
+		huffmanTree[i].parent = 0;
+		huffmanTree[i].lchild = 0;
+		huffmanTree[i].rchild = 0;
+	}
+	for (int i = n + 1; i &lt;= m; i++) {
+		huffmanTree[i].weight = w[i];
+		huffmanTree[i].parent = 0;
+		huffmanTree[i].lchild = 0;
+		huffmanTree[i].rchild = 0;
+	}
+	for (int i = n + 1; i &lt;= m; i++) {
+		select(huffmanTree, i - 1, s1, s2);
+		huffmanTree[s1].parent = i;
+		huffmanTree[s2].parent = i;
+		huffmanTree[i].lchild = s1;
+		huffmanTree[i].rchild = s2;
+		huffmanTree[i].weight = huffmanTree[s1].weight + huffmanTree[s2].weight;
+	}
+</code></pre>
 
             </div>
             
