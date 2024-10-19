@@ -4,128 +4,59 @@
     <meta charset="utf-8" >
 
 <title>学习经验 | xyh&#39;s blog</title>
-<meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://xyh-a.github.io/favicon.ico?v=1729334568964">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="https://xyh-a.github.io/favicon.ico?v=1729335009458">
 <link rel="stylesheet" href="https://xyh-a.github.io/styles/main.css">
 
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
 
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
+
+    <meta name="description" content="温故而知新">
   </head>
   <body>
-    <nav class="navbar border fixed split-nav">
-  <div class="nav-brand">
-    <h3><a href="https://xyh-a.github.io">xyh&#39;s blog</a></h3>
-  </div>
-  <div class="collapsible">
-    <input id="collapsible1" type="checkbox" name="collapsible1">
-    <button>
-      <label for="collapsible1">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </label>
-    </button>
-    <div class="collapsible-body">
-      <ul class="inline">
-        
-          <li>
-            
-              <a href="https://xyh-a.github.io" class="menu">
-                首页
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="https://xyh-a.github.io/tags" class="menu">
-                归档
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="https://xyh-a.github.io/archives" class="menu">
-                标签
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="https://xyh-a.github.io/archives" class="menu">
-                关于
-              </a>
-            
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
+    <div id="app" class="main">
 
-    <div id="top" class="row site">
-      <div class="sm-12 md-8 col">
-        <div class="paper">
-          <h2 class="current-tag">标签: 学习经验</h2>
-          
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://xyh-a.github.io/post/xue-xi-zhou-bao/">学习周报</a>
-    </h2>
-    <p class="article-meta">
-      2024-10-19
-      
-        <a href="https://xyh-a.github.io/tag/3YIfnKSDRj/" class="badge secondary">
-          学习经验
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p><a href="https://xyh-a.github.io/post-images/1729316725353.jpg"></a><br>
-本周学习了哈夫曼树的性质以及一些作用还有图的一些基础概念<br>
-<strong>作用</strong><br>
-1.哈夫曼树主要运用于数据压缩，哈夫曼编码是实现数据压缩的重要方案<br>
-2.哈夫曼编码可以在用二进制给字符编码时使电文总长最短且意思唯一<br>
-3贪心算法也跟哈夫曼树有关（不过并未学习贪心算法）<br>
-<strong>关于哈夫曼树的一些概念和性质</strong><br>
-1哈夫曼树其实是最优二叉树，就是带权路径长（wpl）最短的树<br>
-2哈夫曼树中权越大的结点离根越近</p>
-
-    </p>
-    <div class="row">
-      <a href="https://xyh-a.github.io/post/xue-xi-zhou-bao/" class="readmore-link">
-        <button>
-          Read More
-        </button>
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://xyh-a.github.io">
+        <img src="https://xyh-a.github.io/images/avatar.png?v=1729335009458" class="site-logo">
+        <h1 class="site-title">xyh&#39;s blog</h1>
       </a>
-    </div>
-  </article>
-
-
-        </div>
-        <div class="row flex-edges">
-  
-  
-</div>
-
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
       </div>
-      <div class="sm-12 md-4 col sidebar">
-  <div class="paper info-container">
-    <img src="https://xyh-a.github.io/images/avatar.png?v=1729334568964" class="no-responsive avatar">
-    <div class="text-muted">温故而知新</div>
+    </div>
+    <div>
+      
+        
+          <a href="https://xyh-a.github.io" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="https://xyh-a.github.io/tags" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="https://xyh-a.github.io/archives" class="site-nav">
+            标签
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
     <div class="social-container">
       
         
@@ -139,51 +70,79 @@
         
       
     </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      最新文章
+    <div class="site-description">
+      温故而知新
     </div>
-    <div class="row">
-      <ul>
-        
-          
-            <li>
-              <a href="https://xyh-a.github.io/post/xue-xi-zhou-bao/">学习周报</a>
-            </li>
-          
-        
-      </ul>
+    <div class="site-footer">
+      仅供学习参考，未经允许请勿转载 | <a class="rss" href="https://xyh-a.github.io/atom.xml" target="_blank">RSS</a>
     </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      标签列表
-    </div>
-    <div class="row">
-      
-        <a href="https://xyh-a.github.io/tag/3YIfnKSDRj/" class="badge success">
-          学习经验
-        </a>
-      
-    </div>
-  </div>
-  <div class="paper">
-    仅供学习参考，未经允许请勿转载 | <a class="rss" href="https://xyh-a.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
 
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <h2 class="current-tag">标签: 学习经验</h2>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://xyh-a.github.io/post/xue-xi-zhou-bao/">
+                  <h2 class="post-title">学习周报</h2>
+                </a>
+                <div class="post-date">
+                  2024-10-19
+                </div>
+                <div class="post-abstract">
+                  <p><a href="https://xyh-a.github.io/post-images/1729316725353.jpg"></a><br>
+本周学习了哈夫曼树的性质以及一些作用还有图的一些基础概念<br>
+<strong>作用</strong><br>
+1.哈夫曼树主要运用于数据压缩，哈夫曼编码是实现数据压缩的重要方案<br>
+2.哈夫曼编码可以在用二进制给字符编码时使电文总长最短且意思唯一<br>
+3贪心算法也跟哈夫曼树有关（不过并未学习贪心算法）<br>
+<strong>关于哈夫曼树的一些概念和性质</strong><br>
+1哈夫曼树其实是最优二叉树，就是带权路径长（wpl）最短的树<br>
+2哈夫曼树中权越大的结点离根越近</p>
+
+                </div>
+              </div>
+              
+                <a class="right" href="https://xyh-a.github.io/post/xue-xi-zhou-bao/">
+                  <div class="feature-container" style="background-image: url('https://xyh-a.github.io/post-images/xue-xi-zhou-bao.jpg')">
+                  </div>
+                </a>
+              
+            </article>
+          
+
+          <div class="pagination-container">
+  
+  
+</div>
+
+        </div>
+      </div>
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
 <script type="application/javascript">
 
 AOS.init();
 
-hljs.initHighlightingOnLoad()
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
 </script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
 
 
 
